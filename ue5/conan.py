@@ -9,13 +9,13 @@ from ue5.detector import get_platform_from_config, find_ue_install, find_ue_base
 class UE5:
 
     def __init__(self, conanfile: ConanFile, uplugin_name: str):
-        if conanfile.options.platform is None:
+        if conanfile.options.platform == None:
             self.platform = get_platform_from_config(conanfile.settings.os)
         else:
             self.platform = str(conanfile.options.platform)
 
-        if conanfile.options.ue_base_dir is None:
-            self.ue_base_dir = find_ue_base_dir(conanfile.options.ue_base_dir)
+        if conanfile.options.ue_base_dir == None:
+            self.ue_base_dir = find_ue_base_dir(conanfile.settings.os)
         else:
             self.ue_base_dir = str(conanfile.options.ue_base_dir)
 
